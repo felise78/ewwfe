@@ -16,10 +16,11 @@ function init() {
     );
     
     // Création du renderer
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ 
+        antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000011); // Couleur de fond (bleu très foncé)
-    
+
     // Ajout du canvas au DOM
     document.getElementById('container').appendChild(renderer.domElement);
     
@@ -35,11 +36,12 @@ function init() {
     scene.add(directionalLight);
     
     // Pour l'instant, on ajoute juste un cube de test
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    
+    const geometry = new THREE.SphereGeometry(5, 64, 64);
+    const material = new THREE.MeshLambertMaterial({        color: 0x00ff00, wireframe: true });
+    earthMesh = new THREE.Mesh(geometry, material);
+
+    scene.add(earthMesh);
+
     // Gestion du redimensionnement
     window.addEventListener('resize', onWindowResize);
     
@@ -51,7 +53,7 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
     
-    // Ici on ajoutera les animations plus tard
+    earthMesh.rotation.y += 0.01;
     
     renderer.render(scene, camera);
 }
