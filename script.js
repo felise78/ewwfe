@@ -53,7 +53,8 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
     
-    earthMesh.rotation.y += 0.01;
+    earthMesh.rotation.x = Math.PI * 23.5 / 180; // 23 degres
+    earthMesh.rotation.y += 0.001;
     
     renderer.render(scene, camera);
 }
