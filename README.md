@@ -40,3 +40,7 @@ earth rotates on its axis and is at the center of the scene, taking almost the w
 this project also helps me learn:
 - pull requests
 - gitHub actions workflows
+
+
+## assets attribution
+earth textures and images from [threejs-earth](https://github.com/franky-adl/threejs-earth) by franky-adl.
