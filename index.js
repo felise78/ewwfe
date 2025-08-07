@@ -39,20 +39,42 @@ const material = new THREE.MeshPhongMaterial({
 //   bumpScale: 0.04,
 });
 
-
-
 const earthMesh = new THREE.Mesh(geometry, material);
 earthGroup.add(earthMesh);
+
+const lightsMaterial = new THREE.MeshBasicMaterial({
+  // color: 0x00ff00,
+  map: new THREE.TextureLoader().load('./textures/night_lights_modified.png'),
+  blending: THREE.AdditiveBlending,
+});
+const lightsMesh = new THREE.Mesh(geometry, lightsMaterial);
+earthGroup.add(lightsMesh);
+
+const cloudsMaterial = new THREE.MeshStandardMaterial({
+  map: new THREE.TextureLoader().load('./textures/Clouds.png'),
+  blending: THREE.AdditiveBlending,
+  // transparent: true,
+  // opacity: 0.5,
+  // side: THREE.DoubleSide,
+});
+
+const cloudsMesh = new THREE.Mesh(geometry, cloudsMaterial);
+cloudsMesh.scale.set(1.01, 1.01, 1.01);
+earthGroup.add(cloudsMesh);
+
+const fresnelMaterial = new THREE.MeshBasicMaterial({
+  color: 0x0000ff,
+  side: THREE.BackSide,
+  transparent: true,
+  opacity: 0.1,
+});
 
 const stars = getStarfield();
 scene.add(stars);
 
-
-const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-scene.add( light );
-// const light = new THREE.PointLight(0xeeeeee, 20);
-// light.position.set(0, 0, 5);
-// scene.add(light);
+const sunLight = new THREE.DirectionalLight(0xffffff, 1);
+sunLight.position.set(-2, 0.5, 1.5);
+scene.add(sunLight);
 
 
 function animate() {
@@ -60,6 +82,8 @@ function animate() {
   requestAnimationFrame(animate);
 
   earthMesh.rotation.y += 0.002; 
+  lightsMesh.rotation.y += 0.002;
+  cloudsMesh.rotation.y += 0.002;
   renderer.render(scene, camera);
 }
 
@@ -70,3 +94,5 @@ animate();
 // dat.gui ?
 // rajouter le event listeners pour resize et update camera
 // stats pour les performances
+
+// comment faire pour ne pas voir les lumieres de nuit quand la terre est dans le soleil
