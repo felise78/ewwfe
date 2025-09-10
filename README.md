@@ -1,46 +1,43 @@
-# an interactive scene for *EWWFE* song by Batmoon band
+# An Interactive Scene for ***EWWFE*** Song by Batmoon Band
 
-## description
-learning project to teach myself three.js, pull requests and github workflows
+## Description
+Learning project to teach myself three.js
 
-## scene :
-earth rotates on its axis and is at the center of the scene, taking almost the whole screen. the moon rotates around the earth and its own axis, meanwhile a bat also rotates around the earth in a random way. some controls are at the disposal of the user, allowing him to burn the earth, rise the temperature, start wars, spread viruses, and so on ...
+## Scene
+Earth rotates on its axis and is at the center of the scene, taking almost the whole screen. Some controls are at the disposal of the user, allowing him to burn the earth, rise the temperature, start wars, spread viruses, and so on...
 
-## objectives
-- [x] initial project setup
-- [ ] hot reload system : implement makefile + docker environement
-- [ ] create earth sphere (center of system)
-- [ ] add textures to earth
-- [ ] create Moon
-- [ ] make moon orbit around earth
-- [ ] make a bat orbit around the earth in a random way
-- [ ] improve lighting
-- [ ] add evil controls : disasters that you can apply on earth
+## Objectives
+- [x] Initial project setup
+- [x] Create earth sphere (center of system)
+- [x] Add textures to earth
+- [ ] Improve lighting
+- [ ] Add evil controls: disasters that you can apply on earth
 
-## technologies used
-- three.js (r128)
-- html5
-- css3
-- javascript es6
+## Technologies Used
+- Three.js (r128)
+- HTML5
+- CSS3
+- JavaScript ES6
+- Vite (development server)
 
-## installation
-1. clone the repository
-2. open `index.html` in a browser
-3. or use a local server (recommended)
+## Installation & Setup
 
-## planned features
-- earth rotation on its axis
-- moon orbit around Earth
-- moon rotation on its axis
-- bat rotation around the earth
-- more or less realistic lighting
-- interactive evil controls
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm (comes with Node.js)
 
-## gitHub collaboration and CI/CD learning
-this project also helps me learn:
-- pull requests
-- gitHub actions workflows
-
-
-## assets attribution
-earth textures and images from [threejs-earth](https://github.com/franky-adl/threejs-earth) by franky-adl.
+### Steps
+1. Clone the repository:
+```bash
+git clone https://github.com/felise78/ewwfe
+cd ewwfe
+```
+2. Install dependencies:
+```bash
+npm install vite
+```
+3. Launch the development server:
+```bash
+npm run dev
+```
+4. Open your browser and go to the URL displayed in the terminal (usually http://localhost:5173)

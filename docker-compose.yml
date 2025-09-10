@@ -1,9 +1,0 @@
-services:
-  dev:
-    image: node:18-alpine
-    working_dir: /app
-    volumes:
-      - .:/app
-    ports:
-      - "1234:1234"
-    command: sh -c "npm install parcel && npx parcel index.html --host 0.0.0.0"
