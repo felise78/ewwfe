@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terre et Lune - Three.js</title>
-    <link rel="stylesheet" href="./src/styles/main.css">
-</head>
-<body>
-    <div id="info">
-        <h1>EWWFE</h1>
-        <p>1st three.js project</p>
-    </div>
-    
-    <div id="container"></div>
-    
-    <!-- Three.js depuis CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="./src/index.js"></script>
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EWWFE</title>
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            canvas { display: block; }
+        </style>
+        <script src="index.js" type="module"></script>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script type="importmap">
+        {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+            }
+        }
+        </script>
+    </body>
 </html>

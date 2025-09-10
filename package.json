@@ -1,19 +1,13 @@
 {
-  "name": "threejs-starter-template",
-  "version": "1.0.1",
-  "description": "",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "name": "threedemo",
   "scripts": {
-    "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html --public-url ./"
-  },
-  "dependencies": {
-    "dat.gui": "0.x",
-    "three": "0.x"
+    "dev": "vite"
   },
   "devDependencies": {
-    "@parcel/transformer-glsl": "^2.9.3",
-    "parcel": "^2.15.4"
+    "vite": "^4.5.14"
   },
-  "keywords": []
+  "dependencies": {
+    "gltfloader": "github:codeurdenuit/GLTFLoader",
+    "three": "^0.155.0"
+  }
 }
