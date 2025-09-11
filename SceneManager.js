@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import TextureManager from './TextureManager.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { CameraControls } from './CameraControls.js';
 import getStarfield from './getStarfield.js';
 import { createEarth } from './earth/EarthGroup.js';
 
@@ -18,7 +18,7 @@ class SceneManager {
         this.renderer = this.buildRenderer(this.screenDimensions);
         this.camera = this.buildCamera(this.screenDimensions);
         this.textureManager = new TextureManager();
-        
+        this.cameraControls = new CameraControls(this.camera, this.canvas);
         // Initialisation asynchrone
         this.init();
     }
