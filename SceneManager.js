@@ -8,17 +8,21 @@ import { createEarth } from './earth/EarthGroup.js';
 class SceneManager {
   constructor(canvas, width, height) {
     this.canvas = canvas;
-    this.width = width;
-    this.height = height;
+    this.screenDimensions = {
+      width: width,
+      height: height,
+      ratio: width / height,
+      pixelRatio: window.devicePixelRatio || 1
+    };
     
     // Initialisation des composants Three.js
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(75, this.screenDimensions.ratio, 0.1, 1000);
     this.camera.position.z = 5;
     
     this.renderer = new THREE.WebGLRenderer({canvas, antialias: true});
-    this.renderer.setSize(width, height);
-    
+    this.renderer.setSize(this.screenDimensions.width, this.screenDimensions.height);
+
     this.textureManager = new TextureManager();
     this.earth = null;
     this.init();
@@ -55,6 +59,19 @@ class SceneManager {
     
     // Rendu de la scène
     this.renderer.render(this.scene, this.camera);
+  }
+
+  onWindowResize = () => {
+    // Récupérer les nouvelles dimensions
+    this.screenDimensions.width = window.innerWidth;
+    this.screenDimensions.height = window.innerHeight;
+    
+    // Mettre à jour la caméra
+    this.camera.aspect = this.screenDimensions.width / this.screenDimensions.height;
+    this.camera.updateProjectionMatrix();
+    
+    // Mettre à jour le renderer
+    this.renderer.setSize(this.screenDimensions.width, this.screenDimensions.height);
   }
 }
 

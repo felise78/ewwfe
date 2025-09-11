@@ -8,10 +8,17 @@ const h = window.innerHeight;
 // Initialisation du gestionnaire de scène
 const sceneManager = new SceneManager(canvas, w, h);
 
-// bindEventListeners();
+bindEventListeners();
 render();
 
 function render() {
   requestAnimationFrame(render);
   sceneManager.update();
+}
+
+function bindEventListeners() {
+  // Event listeners pour le resize et autres interactions DOM
+  window.addEventListener('resize', () => {
+    sceneManager.onWindowResize();
+  });
 }

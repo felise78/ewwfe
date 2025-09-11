@@ -8,17 +8,17 @@
             * { margin: 0; padding: 0; box-sizing: border-box; }
             canvas { display: block; }
         </style>
-        <script src="main.js" type="module"></script>
     </head>
     <body>
         <canvas id="canvas"></canvas>
         <script type="importmap">
-        {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
-            }
-        }
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+                        "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+                        }
+                }
         </script>
-    </body>
+        <script src="main.js" type="module"></script>
+            </body>
 </html>
