@@ -1,24 +1,29 @@
 import SceneManager from './SceneManager.js';
 
-// Point d'entrée de l'application - gestion du DOM et de l'interface
 const canvas = document.getElementById('canvas');
-const w = window.innerWidth; 
-const h = window.innerHeight; 
 
-// Initialisation du gestionnaire de scène
-const sceneManager = new SceneManager(canvas, w, h);
+const sceneManager = new SceneManager(canvas);
 
 bindEventListeners();
 render();
 
+
+function bindEventListeners() {
+	window.onresize = resizeCanvas;
+	resizeCanvas();	
+}
+
+function resizeCanvas() {
+  canvas.style.width = '100%';
+	canvas.style.height= '100%';
+	
+	canvas.width  = canvas.offsetWidth;
+	canvas.height = canvas.offsetHeight;
+  
+  sceneManager.onWindowResize();
+}
+
 function render() {
   requestAnimationFrame(render);
   sceneManager.update();
-}
-
-function bindEventListeners() {
-  // Event listeners pour le resize et autres interactions DOM
-  window.addEventListener('resize', () => {
-    sceneManager.onWindowResize();
-  });
 }
