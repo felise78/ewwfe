@@ -4,26 +4,34 @@ import { createCloudsMesh } from './CloudsMesh.js';
 import { createNightLightsMesh } from './NightlightsMesh.js';
 
 export async function createEarth(textureManager) {
-  // Créer le groupe conteneur
+  
   const earthGroup = new THREE.Group();
   earthGroup.rotation.z = -23.4 * (Math.PI / 180); // Inclinaison
-  
-  // Ajouter tous les éléments
-  const earthMesh = await createEarthMesh(textureManager);
-  const cloudsMesh = createCloudsMesh();
-  const lightsMesh = createNightLightsMesh();
-  
+  const geometry = new THREE.IcosahedronGeometry(1, 12);
+
+  const earthMesh = await createEarthMesh(textureManager, geometry);
+  const cloudsMesh = await createCloudsMesh(textureManager, geometry);
+  const nightLightsMesh = await createNightLightsMesh(textureManager, geometry);
+
+
+  // console.log('🌍 Earth position:', earthMesh.position);
+  // console.log('☁️ Clouds position:', cloudsMesh.position);
+  // console.log('💡 Lights position:', nightLightsMesh.position);
+
+  // console.log('🌍 Earth scale:', earthMesh.scale);
+  // console.log('☁️ Clouds scale:', cloudsMesh.scale);
+  // console.log('💡 Lights scale:', nightLightsMesh.scale);
+
   earthGroup.add(earthMesh);
   earthGroup.add(cloudsMesh);  
-  earthGroup.add(lightsMesh);
+  earthGroup.add(nightLightsMesh);
   
-  // Retourner le groupe ET les meshes individuels pour l'animation
   return {
     group: earthGroup,
     meshes: {
       earth: earthMesh,
       clouds: cloudsMesh,
-      lights: lightsMesh
+      lights: nightLightsMesh
     }
   };
 }
